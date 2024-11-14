@@ -22,9 +22,13 @@ void player_render(SDL_Renderer *renderer, Player *player)
 void player_move(int dir, Player *player)
 {
   if (dir == 1) {
-    player->pos->y += player->velocity;
+    if (player->pos->y < WINDOW_H - player->h) {
+      player->pos->y += player->velocity;
+    }
   } else if (dir == 0) {
-    player->pos->y -= player->velocity;
+    if(player->pos->y > 0) {
+      player->pos->y -= player->velocity;
+    }
   }
 }
 
