@@ -11,5 +11,6 @@ typedef struct {
 
 Player* player_create(float, float);
 void player_render(SDL_Renderer*, Player*);
+void player_destroy(Player*);
 
 #endif

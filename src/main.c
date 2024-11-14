@@ -30,5 +30,10 @@ int main()
     SDL_RenderPresent(renderer);
   }
 
+  player_destroy(player);
+  player_destroy(player2);
+  SDL_DestroyRenderer(renderer);
+  SDL_DestroyWindow(window);
+  SDL_Quit();
   return 0;
 }
