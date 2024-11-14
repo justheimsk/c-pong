@@ -42,7 +42,7 @@ void ball_upadate(Ball *ball, Player* player1, Player* player2)
   if(ball->pos->x <= 0 || ball->pos->x >= WINDOW_W - ball->w) ball->vel->x *= -1;
   if(ball->pos->y <= 0 || ball->pos->y >= WINDOW_H - ball->h) ball->vel->y *= -1;
 
-  if(check_player_colision(ball, player1) || check_player_colision(ball, player2)) ball->vel->x *= -1; 
+  if(check_player_colision(ball, player1) || check_player_colision(ball, player2)) ball->vel->x *= -1;
 }
 
 void ball_destroy(Ball *ball)
