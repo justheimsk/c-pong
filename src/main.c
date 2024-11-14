@@ -1,10 +1,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_keyboard.h>
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_stdinc.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
 #include "../include/player.h"
 #include "../include/defs.h"
+#include "../include/input.h"
 
 int main() 
 {
@@ -15,19 +18,31 @@ int main()
   Player *player = player_create(10, 10);
   Player *player2 = player_create(WINDOW_W - PLAYER_W - 10, WINDOW_H - PLAYER_H - 10);
 
-  while(1) 
+  SDL_Event ev;
+  int running = 1;
+  while(running) 
   {
-    SDL_Event ev;
-    if(SDL_PollEvent(&ev))
+    while(SDL_PollEvent(&ev))
     {
-      if(ev.type == SDL_QUIT) break;
+      if(ev.type == SDL_QUIT) 
+      {
+        running = 0;
+        break;
+      }
     }
+
+    const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+    handle_wasd(player, keystate);
+    handle_arrows(player2, keystate);
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 1);
     SDL_RenderClear(renderer);
+
     player_render(renderer, player);
     player_render(renderer, player2);
+
     SDL_RenderPresent(renderer);
+    SDL_Delay(16);
   }
 
   player_destroy(player);
