@@ -6,6 +6,7 @@
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
 #include "../include/player.h"
+#include "../include/ball.h"
 #include "../include/defs.h"
 #include "../include/input.h"
 
@@ -17,6 +18,7 @@ int main()
   SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
   Player *player = player_create(10, 10);
   Player *player2 = player_create(WINDOW_W - PLAYER_W - 10, WINDOW_H - PLAYER_H - 10);
+  Ball* ball = ball_create(WINDOW_W / 2, WINDOW_H / 2);
 
   SDL_Event ev;
   int running = 1;
@@ -38,6 +40,8 @@ int main()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 1);
     SDL_RenderClear(renderer);
 
+    ball_render(renderer, ball);
+    ball_upadate(ball);
     player_render(renderer, player);
     player_render(renderer, player2);
 
