@@ -41,7 +41,7 @@ int main()
     SDL_RenderClear(renderer);
 
     ball_render(renderer, ball);
-    ball_upadate(ball);
+    ball_upadate(ball, player, player2);
     player_render(renderer, player);
     player_render(renderer, player2);
 
