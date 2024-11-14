@@ -9,3 +9,8 @@ Vec2* vec2_create(float x, float y)
 
   return vec;
 }
+
+void vec2_destroy(Vec2 *vec)
+{
+  free(vec);
+}

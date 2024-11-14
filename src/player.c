@@ -17,3 +17,9 @@ void player_render(SDL_Renderer *renderer, Player *player)
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 1);
   SDL_RenderFillRect(renderer, &(SDL_Rect){ .x=player->pos->x, .y=player->pos->y, .w=player->w, .h=player->h });
 };
+
+void player_destroy(Player *player) 
+{
+  vec2_destroy(player->pos);
+  free(player);
+}
