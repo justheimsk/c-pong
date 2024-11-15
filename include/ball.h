@@ -8,12 +8,13 @@
 typedef struct {
   Vec2 *pos;
   Vec2 *vel;
+  Vec2 *dir;
   int w, h;
 } Ball;
 
 Ball* ball_create(float, float);
 void ball_render(SDL_Renderer*, Ball*);
-void ball_upadate(Ball*, Player*, Player*);
+int ball_upadate(Ball*, Player*, Player*);
 void ball_destroy(Ball*);
 
 #endif
