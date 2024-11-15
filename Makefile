@@ -1,5 +1,5 @@
 CC = cc
-LDFLAGS = -lSDL2
+LDFLAGS = -lSDL2 -lSDL2_ttf
 CFLAGS = -Wall -Wextra -march=native -I./include
 TARGET = main
 BUILD_DIR = build
