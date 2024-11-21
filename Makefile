@@ -1,6 +1,6 @@
 CC = cc
 LDFLAGS = -lSDL2 -lSDL2_ttf
-CFLAGS = -Wall -Wextra -march=native -I./include
+CFLAGS = -O3 -Wall -Wextra -march=native -I./include
 TARGET = main
 BUILD_DIR = build
 SRC = $(shell find src -name "*.c")
